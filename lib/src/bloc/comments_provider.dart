@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+import 'package:fluttercourse/src/bloc/comments_bloc.dart';
+export 'package:fluttercourse/src/bloc/comments_bloc.dart';
+
+class CommentsProvider extends InheritedWidget {
+  final CommentsBloc bloc;
+
+  CommentsProvider({required Key key, required Widget child})
+      : bloc = CommentsBloc(),
+        super(key: key, child: child);
+
+  @override
+  bool updateShouldNotify(covariant InheritedWidget oldWidget) {
+    return true;
+  }
+
+  static CommentsBloc of(BuildContext context) {
+    return (context.dependOnInheritedWidgetOfExactType<CommentsProvider>()!).bloc;
+  }
+}
